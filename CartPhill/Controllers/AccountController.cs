@@ -18,6 +18,14 @@ namespace CartPhill.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        private void MigrateShoppingCart(string Email)
+        {
+            //cart marries user
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+            cart.MigrateCart(Email);
+            Session[ShoppingCart.CartSessionKey] = Email;
+        }
+
         public AccountController()
         {
         }
@@ -75,7 +83,9 @@ namespace CartPhill.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
+            MigrateShoppingCart(model.Email);
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            
             switch (result)
             {
                 case SignInStatus.Success:
@@ -156,7 +166,7 @@ namespace CartPhill.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    MigrateShoppingCart(model.Email);       
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -356,6 +366,7 @@ namespace CartPhill.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                MigrateShoppingCart(model.Email);
                 return RedirectToAction("Index", "Manage");
             }
 

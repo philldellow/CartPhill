@@ -56,3 +56,5 @@ c:\Users\Phillip\Documents\Visual Studio 2013\Projects\CartPhill\CartPhill\obj\D
 c:\Users\Phillip\Documents\Visual Studio 2013\Projects\CartPhill\CartPhill\obj\Debug\CartPhill.Migrations.InitialCreate.resources
 c:\Users\Phillip\Documents\Visual Studio 2013\Projects\CartPhill\CartPhill\obj\Debug\CartPhill.csproj.GenerateResource.Cache
 c:\Users\Phillip\Documents\Visual Studio 2013\Projects\CartPhill\CartPhill\obj\Debug\CartPhill.Migrations.init.resources
+C:\Users\Phillip\documents\visual studio 2013\Projects\CartPhill\CartPhill\obj\Debug\CartPhill.Migrations.tellsMeTheContextHasChanged.resources
+C:\Users\Phillip\documents\visual studio 2013\Projects\CartPhill\CartPhill\obj\Debug\CartPhill.Migrations.itGotBrokeAgain.resources

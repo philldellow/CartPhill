@@ -15,9 +15,32 @@ namespace CartPhill.Controllers
         private Product db = new Product();
 
         // GET: OPPs
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    return View(db.Hoards.ToList());
+        //}
+        public ActionResult Index(string productCatagory, string searchString)
         {
-            return View(db.Hoards.ToList());
+            var CatagoryList = new List<string>();
+            var CatagoryQuery = from d in db.Hoards
+                orderby d.Catagory
+                select d.Catagory;
+
+            CatagoryList.AddRange(CatagoryQuery.Distinct());
+            ViewBag.productCatagory = new SelectList(CatagoryList);
+
+            var products = from p in db.Hoards
+                           select p;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Name.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(productCatagory))
+            {
+                products = products.Where(k => k.Catagory == productCatagory);
+            }
+            return View(products);
         }
 
         // GET: OPPs/Details/5
@@ -123,5 +146,6 @@ namespace CartPhill.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

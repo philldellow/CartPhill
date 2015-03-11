@@ -10,7 +10,6 @@ namespace CartPhill.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "CartPhill.Models.Product";
         }
 
         protected override void Seed(CartPhill.Models.Product context)

@@ -7,17 +7,7 @@ namespace CartPhill.Migrations
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.OPPs",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Price = c.Int(nullable: false),
-                        Description = c.String(),
-                        Catagory = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
+           
             
         }
         
