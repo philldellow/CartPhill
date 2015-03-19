@@ -11,9 +11,11 @@
     @*@Html.ActionLink("Create New", "Create")*@
     @using (Html.BeginForm("Index", "OPPs", FormMethod.Get))
     {
-        <p> Category: @Html.DropDownList("productCatagory","ALL")
-            Search by Name: @Html.TextBox("SearchString") <br />
-    <p></p>
+        <p> Category: @Html.DropDownList("productCatagory", "ALL")
+            Search by Name: @Html.TextBox("SearchString") <br/>
+        </p>
+        <p></p>
+        <p>
             <input type="submit" value="Obey this filter" />
         </p>
     }
